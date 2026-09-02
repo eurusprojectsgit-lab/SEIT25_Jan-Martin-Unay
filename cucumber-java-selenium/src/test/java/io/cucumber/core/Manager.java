@@ -11,14 +11,14 @@ public class Manager {
   private ChromeDriver driver;
 
   public Manager() {
-    this.stash = new HashMap<>();
+      this.stash = new HashMap<>();
   }
 
   public ChromeDriver getDriver() {
-    return driver;
+      return driver;
   }
 
   public void setDriver(ChromeDriver driver) {
-    this.driver = driver;
+      this.driver = driver;
   }
 }

@@ -12,7 +12,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.logging.LoggingPreferences;
 
-public class Hooks extends Context {
+public class    Hooks extends Context {
 
   public Hooks(Manager manager) {
     super(manager);
@@ -20,31 +20,31 @@ public class Hooks extends Context {
 
   @Before()
   public void before() {
-    ChromeOptions options = new ChromeOptions();
-    LoggingPreferences logPrefs = new LoggingPreferences();
-    logPrefs.enable(LogType.BROWSER, Level.ALL);
-    options.addArguments("start-maximized");
-    options.setCapability(ChromeOptions.LOGGING_PREFS, logPrefs);
-    manager.setDriver(new ChromeDriver(options));
-    System.out.println("Made driver");
+      ChromeOptions options = new ChromeOptions();
+      LoggingPreferences logPrefs = new LoggingPreferences();
+      logPrefs.enable(LogType.BROWSER, Level.ALL);
+      options.addArguments("start-maximized");
+      options.setCapability(ChromeOptions.LOGGING_PREFS, logPrefs);
+      manager.setDriver(new ChromeDriver(options));
+      System.out.println("Made driver");
   }
 
   @BeforeStep
   public void beforeStep() {
-    System.out.println("Starting step..............................");
+      System.out.println("Starting step..............................");
   }
 
   @AfterStep
   public void afterStep(Scenario scenario) {
-    byte[] screenshot = getDriver().getScreenshotAs(OutputType.BYTES);
-    scenario.attach(screenshot, "image/png", "A Nice Screenshot.");
-    System.out.println("End of step................................");
+      byte[] screenshot = getDriver().getScreenshotAs(OutputType.BYTES);
+      scenario.attach(screenshot, "image/png", "A Nice Screenshot.");
+      System.out.println("End of step................................");
   }
 
   @After
   public void after() {
-    getDriver().quit();
-    System.out.println("Quit driver");
+      getDriver().quit();
+      System.out.println("Quit driver");
   }
 
 }
