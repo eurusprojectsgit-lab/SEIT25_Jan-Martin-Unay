@@ -9,6 +9,7 @@ import io.cucumber.java.en.When;
 import io.cucumber.pages.BasicAuth;
 import io.cucumber.pages.Elements;
 import io.cucumber.pages.Page;
+import org.openqa.selenium.NoSuchElementException;
 
 import java.util.List;
 import java.util.Map;
@@ -45,10 +46,15 @@ public class Home extends Context {
         List<Map<String, String>> linkName = dataTable.asMaps(String.class, String.class);
 
         for (Map<String, String> link : linkName) {
-            String expectedLink = link.get("Expected Link");
+            String expectedLink = link.get("Expected Result");
 
-            assert element.link(expectedLink).isDisplayed()
-                    : "Link was not found: " + expectedLink;
+            try {
+                assert element.link(expectedLink).isDisplayed()
+                        : "Link was not displayed: " + expectedLink;
+
+            } catch (NoSuchElementException e) {
+                throw new AssertionError("Link was not found: " + expectedLink);
+            }
         }
     }
 

@@ -6,7 +6,7 @@ Feature: The Internet
   Scenario: Homepage has a list of links to Expected examples
     Given the page under test is 'https://the-internet.herokuapp.com'
     And I verify the following links
-      | Expected Link                   |
+      | Expected Result                 |
       | A/B Testing                     |
       | Add/Remove Elements             |
       | Basic Auth                      |
